@@ -1,0 +1,39 @@
+.header {
+	color: white;
+	overflow: hidden;
+	margin: 0 0 16px;
+	padding: 16px 0;
+}
+
+.header-content {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-bottom: 25px;
+}
+
+.header__title {
+	font-size: 40px;
+	margin: 0 0 3px;
+}
+
+.header__subtitle {
+	color: #d8e61c;
+	font-size: $font-size-large;
+	font-weight: 500;
+	margin: 0;
+}
+
+.header-user__content {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+.user__link {
+	color: white;
+}
+
+hr.hr {
+	background: linear-gradient(to right, rgb(10, 94, 128) 0%, yellow 100%);
+}

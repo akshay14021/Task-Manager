@@ -1,0 +1,16 @@
+.form {
+	display: flex;
+	flex-direction: column;
+}
+
+.form--addtask {
+	flex-direction: row;
+	padding: 16px;
+}
+
+.form__error {
+	margin: $m-size 0 0 0;
+	font-style: italic;
+	font-size: $font-size-large;
+	font-weight: bold;
+}
