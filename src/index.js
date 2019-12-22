@@ -17,6 +17,8 @@ app.use(cors())
 app.use(userRouter)
 app.use(taskRouter)
 
+app.options('*', cors())
+
 if (environment === 'production') {
 	app.use(express.static(path.join(__dirname, 'client', 'build')))
 
