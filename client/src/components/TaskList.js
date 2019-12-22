@@ -7,13 +7,13 @@ import { history } from '../routers/AppRouter'
 
 class TaskList extends Component {
 	handleTaskDelete = id => {
-		Axios.delete(`/api/tasks/${id}`, {
+		Axios.delete(`/tasks/${id}`, {
 			headers: {
 				Authorization: 'Bearer ' + this.props.token
 			}
 		}).then(response => {
 			this.props.dispatch(startDeleteTask(id))
-			Axios.get('/api/tasks', {
+			Axios.get('/tasks', {
 				headers: {
 					Authorization: 'Bearer ' + this.props.token
 				}
@@ -26,7 +26,7 @@ class TaskList extends Component {
 
 	handleTaskUpdate = (id, value) => {
 		Axios.patch(
-			`/api/tasks/${id}`,
+			`/tasks/${id}`,
 			{
 				completed: value
 			},
@@ -36,7 +36,7 @@ class TaskList extends Component {
 				}
 			}
 		).then(response => {
-			Axios.get('/api/tasks', {
+			Axios.get('/tasks', {
 				headers: {
 					Authorization: 'Bearer ' + this.props.token
 				}

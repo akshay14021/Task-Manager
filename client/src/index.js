@@ -28,14 +28,14 @@ const renderApp = () => {
 
 if (JSON.parse(sessionStorage.getItem('auth'))) {
 	store.dispatch(setLogin(JSON.parse(sessionStorage.getItem('auth'))))
-	Axios.get('/api/users/me', {
+	Axios.get('/users/me', {
 		headers: {
 			Authorization:
 				'Bearer ' + JSON.parse(sessionStorage.getItem('auth')).token
 		}
 	}).then(response => {
 		store.dispatch(setProfile(response.data))
-		Axios.get('/api/tasks', {
+		Axios.get('/tasks', {
 			headers: {
 				Authorization:
 					'Bearer ' + JSON.parse(sessionStorage.getItem('auth')).token

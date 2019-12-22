@@ -41,10 +41,11 @@ class Form extends Component {
 	onSubmitHandler = e => {
 		e.preventDefault()
 		Axios.patch(
-			'/api/users/me',
+			'/users/me',
 			{
 				name: this.state.name,
 				email: this.state.email,
+				password: this.state.password,
 				age: this.state.age
 			},
 			{
@@ -59,14 +60,15 @@ class Form extends Component {
 			})
 			.catch(error => {
 				this.setState({
-					message: 'Please provide all details correctly'
+					message:
+						'Please provide all details correctly, (make sure password does not have "password")'
 				})
 			})
 	}
 
 	handleUserRegistration = e => {
 		e.preventDefault()
-		Axios.post('/api/users', {
+		Axios.post('/users', {
 			name: this.state.name,
 			email: this.state.email,
 			password: this.state.password,
@@ -87,7 +89,7 @@ class Form extends Component {
 
 	handleUserDelete = e => {
 		e.preventDefault()
-		Axios.delete('/api/users/me', {
+		Axios.delete('/users/me', {
 			headers: {
 				Authorization: 'Bearer ' + this.props.token
 			}
@@ -139,6 +141,18 @@ class Form extends Component {
 							value={this.state.email}
 							onChange={this.onEmailChange}
 							placeholder='Email'
+							className='text-input'
+						/>
+
+						<div>
+							<hr />
+						</div>
+
+						<input
+							type='password'
+							value={this.state.password}
+							onChange={this.onPasswordChange}
+							placeholder='Password'
 							className='text-input'
 						/>
 

@@ -30,7 +30,7 @@ class Login extends Component {
 		e.preventDefault()
 		if (this.state.email && this.state.password) {
 			axios
-				.post('/api/users/login', {
+				.post('/users/login', {
 					email: this.state.email,
 					password: this.state.password
 				})
@@ -42,7 +42,7 @@ class Login extends Component {
 						JSON.stringify(response.data)
 					)
 					axios
-						.get('/api/tasks', {
+						.get('/tasks', {
 							headers: {
 								Authorization:
 									'Bearer ' +

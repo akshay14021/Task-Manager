@@ -20,7 +20,7 @@ class AddTask extends Component {
 		e.preventDefault()
 		if (this.state.description) {
 			Axios.post(
-				'/api/tasks',
+				'/tasks',
 				{
 					description: this.state.description
 				},
@@ -30,7 +30,7 @@ class AddTask extends Component {
 					}
 				}
 			).then(response => {
-				Axios.get('/api/tasks', {
+				Axios.get('/tasks', {
 					headers: {
 						Authorization: 'Bearer ' + this.props.token
 					}
