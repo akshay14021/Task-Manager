@@ -1,5 +1,6 @@
 const express = require('express')
 const path = require('path')
+const cors = require('cors')
 require('./db/mongoose')
 require('dotenv').config()
 const userRouter = require('./routes/user')
@@ -12,6 +13,7 @@ var environment = process.env.NODE_ENV || 'development'
 
 // Parse json to object
 app.use(express.json())
+app.use(cors())
 app.use(userRouter)
 app.use(taskRouter)
 
