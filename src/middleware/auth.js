@@ -1,9 +1,10 @@
 const jwt = require('jsonwebtoken')
 const User = require('../models/user')
 
+const secret = process.env.SECRET || 'thisismynewcourse'
+
 const auth = async (req, res, next) => {
 	try {
-		const secret = process.env.SECRET || 'thisismynewcourse'
 		const token = req.header('Authorization').replace('Bearer ', '')
 		const decoded = jwt.verify(token, secret)
 		const user = await User.findOne({
