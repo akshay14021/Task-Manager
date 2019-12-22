@@ -35,16 +35,16 @@ if (JSON.parse(sessionStorage.getItem('auth'))) {
 		}
 	}).then(response => {
 		store.dispatch(setProfile(response.data))
-		Axios.get('tasks', {
+		Axios.get('/tasks', {
 			headers: {
 				Authorization:
 					'Bearer ' + JSON.parse(sessionStorage.getItem('auth')).token
 			}
 		}).then(response => {
 			store.dispatch(startSetTasks(response.data))
+			renderApp()
 		})
 	})
-	renderApp()
 	if (history.location.pathname === '/') {
 		history.push('/dashboard')
 	}
