@@ -13,7 +13,7 @@ class Form extends Component {
 			name: this.props.user.name || '',
 			email: this.props.user.email || '',
 			password: this.props.user.password || '',
-			age: this.props.user.age || 0,
+			age: this.props.user.age,
 			message: ''
 		}
 	}
@@ -41,11 +41,10 @@ class Form extends Component {
 	onSubmitHandler = e => {
 		e.preventDefault()
 		Axios.patch(
-			'http://localhost:5000/users/me',
+			'/api/users/me',
 			{
 				name: this.state.name,
 				email: this.state.email,
-				password: this.state.password,
 				age: this.state.age
 			},
 			{
@@ -53,15 +52,21 @@ class Form extends Component {
 					Authorization: 'Bearer ' + this.props.token
 				}
 			}
-		).then(response => {
-			this.props.dispatch(setProfile(response.data))
-			history.push('/users/me')
-		})
+		)
+			.then(response => {
+				this.props.dispatch(setProfile(response.data))
+				history.push('/users/me')
+			})
+			.catch(error => {
+				this.setState({
+					message: 'Please provide all details correctly'
+				})
+			})
 	}
 
 	handleUserRegistration = e => {
 		e.preventDefault()
-		Axios.post('http://localhost:5000/users', {
+		Axios.post('/api/users', {
 			name: this.state.name,
 			email: this.state.email,
 			password: this.state.password,
@@ -74,13 +79,15 @@ class Form extends Component {
 				history.push('/dashboard')
 			})
 			.catch(error => {
-				this.setState({ message: error.response.data })
+				this.setState({
+					message: 'Please provide all the details correctly'
+				})
 			})
 	}
 
 	handleUserDelete = e => {
 		e.preventDefault()
-		Axios.delete('http://localhost:5000/users/me', {
+		Axios.delete('/api/users/me', {
 			headers: {
 				Authorization: 'Bearer ' + this.props.token
 			}
@@ -94,55 +101,105 @@ class Form extends Component {
 
 	render() {
 		return (
-			<form onSubmit={e => this.onSubmitHandler(e)}>
-				{this.props.token ? (
-					<h1>Edit Profile</h1>
-				) : (
-					<h1>Create Account</h1>
-				)}
-				<input
-					type='text'
-					value={this.state.name}
-					onChange={this.onNameChange}
-					placeholder='name'
-				/>
-				<input
-					type='text'
-					value={this.state.email}
-					onChange={this.onEmailChange}
-					placeholder='email'
-				/>
-				<input
-					type='password'
-					value={this.state.password}
-					onChange={this.onPasswordChange}
-					password='password'
-				/>
-				<input
-					type='text'
-					value={this.state.age}
-					onChange={this.onAgeChange}
-					placeholder='age'
-				/>
-				{this.props.token ? (
-					<div>
-						<button>Update</button>
-						<button onClick={e => this.handleUserDelete(e)}>
-							Delete
-						</button>
-					</div>
-				) : (
-					<div>
-						<p>{this.state.message}</p>
-						<button onClick={e => this.handleUserRegistration(e)}>
-							Register
-						</button>
-						<button>
-							<Link to='/'>Login</Link>
-						</button>
-					</div>
-				)}
-			</form>
+			<div className='login-content'>
+				<div className='login-content__data'>
+					<div className='login-content__header'>Task App</div>
+					<span className='login-content__subtitle'>
+						Keep your tasks at one place
+					</span>
+				</div>
+				<div className='login-content__form'>
+					<form
+						className='form'
+						onSubmit={e => this.onSubmitHandler(e)}
+					>
+						{this.props.token ? (
+							<h1 className='login-content__form__header'>
+								Edit Profile
+							</h1>
+						) : (
+							<h1 className='login-content__form__header'>
+								Create Account
+							</h1>
+						)}
+						<input
+							type='text'
+							value={this.state.name}
+							onChange={this.onNameChange}
+							placeholder='Name'
+							className='text-input'
+						/>
+
+						<div>
+							<hr />
+						</div>
+
+						<input
+							type='text'
+							value={this.state.email}
+							onChange={this.onEmailChange}
+							placeholder='Email'
+							className='text-input'
+						/>
+
+						<div>
+							<hr />
+						</div>
+
+						<input
+							type='text'
+							value={this.state.age}
+							onChange={this.onAgeChange}
+							placeholder='Age'
+							className='text-input'
+						/>
+
+						<div>
+							<hr />
+						</div>
+
+						{this.props.token ? (
+							<div>
+								<span className='form__error--register'>
+									{this.state.message}
+								</span>
+								<div className='form-buttons'>
+									<button className='button button--update'>
+										Update
+									</button>
+									<button
+										className='button button--delete'
+										onClick={e => this.handleUserDelete(e)}
+									>
+										Delete
+									</button>
+								</div>
+							</div>
+						) : (
+							<div>
+								<span className='form__error--register'>
+									{this.state.message}
+								</span>
+								<div className='form-buttons'>
+									<button
+										className='button'
+										onClick={e =>
+											this.handleUserRegistration(e)
+										}
+									>
+										Register
+									</button>
+									<button className='button button--login'>
+										<Link className='link' to='/'>
+											Login
+										</Link>
+									</button>
+								</div>
+							</div>
+						)}
+					</form>
+				</div>
+			</div>
 		)
 	}
 }

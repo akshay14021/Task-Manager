@@ -6,7 +6,7 @@ const tasksReducer = (state = defaultTaskReducerState, action) => {
 			return action.tasks
 
 		case 'RESET_TASKS':
-			return state
+			return []
 
 		case 'DELETE_TASK':
 			return state.filter(task => {

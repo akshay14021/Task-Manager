@@ -19,7 +19,7 @@ class Header extends React.Component {
 		JSON.parse(sessionStorage.getItem('auth'))
 		Axios({
 			method: 'post',
-			url: 'http://localhost:5000/users/logout',
+			url: '/api/users/logout',
 			headers: {
 				Authorization: 'Bearer ' + this.props.userData.token
 			}

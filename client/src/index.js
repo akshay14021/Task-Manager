@@ -42,7 +42,6 @@ if (JSON.parse(sessionStorage.getItem('auth'))) {
 			}
 		}).then(response => {
 			store.dispatch(startSetTasks(response.data))
-			history.push('/dashboard')
 		})
 	})
 	renderApp()

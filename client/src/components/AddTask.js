@@ -20,7 +20,7 @@ class AddTask extends Component {
 		e.preventDefault()
 		if (this.state.description) {
 			Axios.post(
-				'http://localhost:5000/tasks',
+				'/api/tasks',
 				{
 					description: this.state.description
 				},
@@ -30,7 +30,7 @@ class AddTask extends Component {
 					}
 				}
 			).then(response => {
-				Axios.get('http://localhost:5000/tasks', {
+				Axios.get('/api/tasks', {
 					headers: {
 						Authorization: 'Bearer ' + this.props.token
 					}
@@ -40,6 +40,7 @@ class AddTask extends Component {
 				})
 			})
 			this.setState({ description: '' })
+			this.setState({ error: '' })
 		} else {
 			this.setState({ error: 'Please type description' })
 		}
@@ -49,7 +50,11 @@ class AddTask extends Component {
 		return (
 			<div className='form-add'>
 				<div className='content-container'>
-					{this.state.error && <p>{this.state.error}</p>}
+					{this.state.error && (
+						<p className='form__error form__error--addtask'>
+							{this.state.error}
+						</p>
+					)}
 					<form
 						className='form form--addtask'
 						onSubmit={e => this.onSubmitHandler(e)}

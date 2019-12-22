@@ -1,0 +1,48 @@
+.profile-content {
+	background-color: white;
+	border-radius: 15px;
+	padding: 20px;
+}
+
+.container {
+	max-width: 600px;
+}
+
+.profile-header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	margin: 0;
+}
+
+.profile-header__h1 {
+	font-size: 4rem;
+	margin: 0;
+	color: rgb(104, 104, 4);
+}
+
+.dashboard {
+	margin: 0;
+}
+
+.profile-header__h2 {
+	font-size: 4rem;
+	margin: 0;
+	text-decoration: none;
+	color: rgb(104, 104, 4);
+}
+
+.profile__details {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+hr {
+	background: linear-gradient(to right, rgb(10, 94, 128) 0%, yellow 100%);
+	height: 5px;
+}
+
+.profile__name {
+	margin: 0;
+}
