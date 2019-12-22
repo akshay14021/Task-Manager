@@ -33,18 +33,23 @@ if (JSON.parse(sessionStorage.getItem('auth'))) {
 			Authorization:
 				'Bearer ' + JSON.parse(sessionStorage.getItem('auth')).token
 		}
-	}).then(response => {
-		store.dispatch(setProfile(response.data))
-		Axios.get('/tasks', {
-			headers: {
-				Authorization:
-					'Bearer ' + JSON.parse(sessionStorage.getItem('auth')).token
-			}
-		}).then(response => {
-			store.dispatch(startSetTasks(response.data))
-			renderApp()
-		})
 	})
+		.then(response => {
+			store.dispatch(setProfile(response.data))
+			Axios.get('/tasks', {
+				headers: {
+					Authorization:
+						'Bearer ' +
+						JSON.parse(sessionStorage.getItem('auth')).token
+				}
+			}).then(response => {
+				store.dispatch(startSetTasks(response.data))
+				renderApp()
+			})
+		})
+		.catch(error => {
+			history.push('/')
+		})
 	if (history.location.pathname === '/') {
 		history.push('/dashboard')
 	}
