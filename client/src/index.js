@@ -35,7 +35,7 @@ if (JSON.parse(sessionStorage.getItem('auth'))) {
 		}
 	}).then(response => {
 		store.dispatch(setProfile(response.data))
-		Axios.get('/tasks', {
+		Axios.get('tasks', {
 			headers: {
 				Authorization:
 					'Bearer ' + JSON.parse(sessionStorage.getItem('auth')).token
