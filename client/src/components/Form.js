@@ -196,7 +196,7 @@ class Form extends Component {
 								</span>
 								<div className='form-buttons'>
 									<button
-										className='button'
+										className='button button--register'
 										onClick={e =>
 											this.handleUserRegistration(e)
 										}

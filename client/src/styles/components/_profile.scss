@@ -2,6 +2,13 @@
 	background-color: white;
 	border-radius: 15px;
 	padding: 20px;
+	margin-top: 40px;
+
+	@media (min-width: $desktop-breakpoint) {
+		background-color: white;
+		border-radius: 15px;
+		padding: 60px;
+	}
 }
 
 .container {
@@ -16,9 +23,15 @@
 }
 
 .profile-header__h1 {
-	font-size: 4rem;
+	font-size: 3rem;
 	margin: 0;
 	color: rgb(104, 104, 4);
+
+	@media (min-width: $desktop-breakpoint) {
+		font-size: 4rem;
+		margin: 0;
+		color: rgb(104, 104, 4);
+	}
 }
 
 .dashboard {
@@ -26,10 +39,17 @@
 }
 
 .profile-header__h2 {
-	font-size: 4rem;
+	font-size: 3rem;
 	margin: 0;
 	text-decoration: none;
 	color: rgb(104, 104, 4);
+
+	@media (min-width: $desktop-breakpoint) {
+		font-size: 4rem;
+		margin: 0;
+		text-decoration: none;
+		color: rgb(104, 104, 4);
+	}
 }
 
 .profile__details {
@@ -44,5 +64,6 @@ hr {
 }
 
 .profile__name {
-	margin: 0;
+	margin-top: 50px;
+	line-height: 0;
 }

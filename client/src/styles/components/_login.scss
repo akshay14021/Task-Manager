@@ -15,21 +15,41 @@
 	background: linear-gradient(to right, rgb(10, 94, 128) 0%, yellow 100%);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
-	font-size: 3.5rem;
-	margin-bottom: 20px;
+	font-size: 3rem;
+	text-align: center;
+	margin-bottom: 30px;
+
+	@media (min-width: $desktop-breakpoint) {
+		background: linear-gradient(to right, rgb(10, 94, 128) 0%, yellow 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		font-size: 3.5rem;
+		margin-bottom: 20px;
+	}
 }
 
 .login-content__form {
-	padding: 4rem;
+	padding: 2rem;
 	background: white;
 	max-width: 60rem;
-	margin: 0 auto;
-	border-radius: 20px;
+	margin: 0 1rem;
+	border-radius: 15px;
+
+	@media (min-width: $desktop-breakpoint) {
+		padding: 4rem;
+		background: white;
+		max-width: 60rem;
+		margin: 0 auto;
+		border-radius: 20px;
+	}
 }
 
 .login-content__form__header {
-	font-size: 5rem;
+	font-size: 3rem;
 	line-height: 0;
+	@media (min-width: $desktop-breakpoint) {
+		font-size: 5rem;
+	}
 }
 
 .subtitle {

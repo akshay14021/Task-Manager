@@ -37,7 +37,11 @@ class Header extends React.Component {
 			<header className='header'>
 				<div className='content-container'>
 					<div className='header-content'>
-						<img src='post-it.png' alt='img' />
+						<img
+							className='header__image'
+							src='post-it.png'
+							alt='img'
+						/>
 						<div>
 							<h1 className='header__title'>Task App</h1>
 							<h2 className='header__subtitle'>

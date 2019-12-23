@@ -23,6 +23,15 @@ hr {
 	border: none;
 	border-bottom: 3px solid #282b36;
 	flex-grow: 1;
-	margin: 20px 0 12px 0;
+	margin: 10px 10px 10px 0;
 	padding: 12px;
+	@media (min-width: $desktop-breakpoint) {
+		color: #ffffff;
+		background: #333745;
+		border: none;
+		border-bottom: 3px solid #282b36;
+		flex-grow: 1;
+		margin: 20px 0 12px 0;
+		padding: 12px;
+	}
 }
