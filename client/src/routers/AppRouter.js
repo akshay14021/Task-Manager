@@ -16,7 +16,7 @@ const AppRouter = props => {
 					<Switch>
 						<Route path='/' component={Login} exact />
 						<Route path='/dashboard' component={Dashboard} />
-						<Route path='/users/me' component={UserProfile} />
+						<Route path='/profile' component={UserProfile} />
 						<Route path='/edit' component={Form} exact />
 						<Route path='/users' component={Form} exact />
 					</Switch>
