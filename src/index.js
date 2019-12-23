@@ -19,7 +19,9 @@ if (process.env.NODE_ENV === 'production') {
 	// like our main.js file, or main.css file!
 	app.use(express.static('client/build'))
 	app.get('*', (req, res) => {
-		res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
+		res.sendFile(
+			path.join(__dirname, '..', 'client', 'build', 'index.html')
+		)
 	})
 }
 
