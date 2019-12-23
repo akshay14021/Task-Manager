@@ -47,7 +47,7 @@ class Header extends React.Component {
 						<div className='header-user__content'>
 							<Link
 								className='subtitle__create user__link'
-								to='/users/me'
+								to='/profile'
 							>
 								My profile
 							</Link>
