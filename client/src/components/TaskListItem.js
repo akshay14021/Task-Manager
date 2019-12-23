@@ -15,6 +15,7 @@ const TaskListItem = props => {
 			>
 				{props.tasks.description}
 			</button>
+
 			<button
 				className='button--removetask'
 				onClick={props.handleTaskDelete}

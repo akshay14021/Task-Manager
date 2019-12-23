@@ -60,6 +60,7 @@ class TaskList extends Component {
 					<div>
 						<hr className='hr' />
 					</div>
+
 					{this.props.tasks.length === 0 ? (
 						<div className='no-task-message'>
 							Add task to get started!

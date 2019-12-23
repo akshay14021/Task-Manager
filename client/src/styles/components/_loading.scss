@@ -1,0 +1,10 @@
+.loading {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	@media (min-width: $desktop-breakpoint) {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+}

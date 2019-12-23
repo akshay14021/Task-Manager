@@ -5,6 +5,7 @@ import { history } from '../routers/AppRouter'
 import Axios from 'axios'
 import { Link } from 'react-router-dom'
 import { startResetTasks } from '../actions/tasks'
+import FadeIn from 'react-fade-in/lib/FadeIn'
 
 class Header extends React.Component {
 	constructor(props) {
@@ -37,11 +38,13 @@ class Header extends React.Component {
 			<header className='header'>
 				<div className='content-container'>
 					<div className='header-content'>
-						<img
-							className='header__image'
-							src='post-it.png'
-							alt='img'
-						/>
+						<FadeIn delay={800}>
+							<img
+								className='header__image'
+								src='post-it.png'
+								alt='img'
+							/>
+						</FadeIn>
 						<div>
 							<h1 className='header__title'>Task App</h1>
 							<h2 className='header__subtitle'>

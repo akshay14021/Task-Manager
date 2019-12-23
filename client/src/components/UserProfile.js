@@ -1,10 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import FadeIn from 'react-fade-in/lib/FadeIn'
 
 const UserProfile = props => {
 	return (
-		<>
+		<FadeIn>
 			<div className='login-content'>
 				<div className='login-content__data'>
 					<div className='login-content__header'>Task App</div>
@@ -46,7 +47,7 @@ const UserProfile = props => {
 					</div>
 				</div>
 			</div>
-		</>
+		</FadeIn>
 	)
 }
 

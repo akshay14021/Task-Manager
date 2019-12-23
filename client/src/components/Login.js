@@ -5,6 +5,7 @@ import { history } from '../routers/AppRouter'
 import { setLogin, setProfile } from '../actions/auth'
 import { startSetTasks } from '../actions/tasks'
 import axios from 'axios'
+import FadeIn from 'react-fade-in/lib/FadeIn'
 
 class Login extends Component {
 	constructor(props) {
@@ -64,52 +65,56 @@ class Login extends Component {
 
 	render() {
 		return (
-			<div className='login-content'>
-				<div className='login-content__data'>
-					<div className='login-content__header'>Task App</div>
-					<span className='login-content__subtitle'>
-						Keep your tasks at one place
-					</span>
-				</div>
-				<div className='login-content__form'>
-					<h1 className='login-content__form__header'>Login</h1>
-					<span className='subtitle'>Dont have an account?</span>
-					<Link className='subtitle__create' to='/users'>
-						<span>Create account</span>
-					</Link>
-					<form
-						className='form'
-						onSubmit={(e, auth) => this.onSubmitHandler(e, auth)}
-					>
-						<input
-							type='text'
-							placeholder='Email Address'
-							value={this.state.email}
-							onChange={this.onEmailChange}
-							className='text-input'
-						/>
-						<div>
-							<hr />
-						</div>
-						<input
-							type='password'
-							placeholder='Password'
-							value={this.state.password}
-							onChange={this.onPasswordChange}
-							className='text-input'
-						/>
-						<div>
-							<hr />
-						</div>
-						{this.state.message ? (
-							<div className='form__error'>
-								{this.state.message}
+			<FadeIn>
+				<div className='login-content'>
+					<div className='login-content__data'>
+						<div className='login-content__header'>Task App</div>
+						<span className='login-content__subtitle'>
+							Keep your tasks at one place
+						</span>
+					</div>
+					<div className='login-content__form'>
+						<h1 className='login-content__form__header'>Login</h1>
+						<span className='subtitle'>Dont have an account?</span>
+						<Link className='subtitle__create' to='/users'>
+							<span>Create account</span>
+						</Link>
+						<form
+							className='form'
+							onSubmit={(e, auth) =>
+								this.onSubmitHandler(e, auth)
+							}
+						>
+							<input
+								type='text'
+								placeholder='Email Address'
+								value={this.state.email}
+								onChange={this.onEmailChange}
+								className='text-input'
+							/>
+							<div>
+								<hr />
 							</div>
-						) : null}
-						<button className='button'>Sign In</button>
-					</form>
+							<input
+								type='password'
+								placeholder='Password'
+								value={this.state.password}
+								onChange={this.onPasswordChange}
+								className='text-input'
+							/>
+							<div>
+								<hr />
+							</div>
+							{this.state.message ? (
+								<div className='form__error'>
+									{this.state.message}
+								</div>
+							) : null}
+							<button className='button'>Sign In</button>
+						</form>
+					</div>
 				</div>
-			</div>
+			</FadeIn>
 		)
 	}
 }

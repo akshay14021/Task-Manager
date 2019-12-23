@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import Header from '../components/Header'
 import AddTask from '../components/AddTask'
 import TaskList from '../components/TaskList'
+import FadeIn from 'react-fade-in/lib/FadeIn'
+import Copyright from './Copyright'
 
 class Dashboard extends React.Component {
 	constructor(props) {
@@ -13,11 +15,12 @@ class Dashboard extends React.Component {
 	}
 	render() {
 		return (
-			<div>
+			<FadeIn delay={200}>
 				<Header />
 				<TaskList />
 				<AddTask />
-			</div>
+				<Copyright />
+			</FadeIn>
 		)
 	}
 }

@@ -5,6 +5,7 @@ import Axios from 'axios'
 import { setProfile, setLogin, startSetLogout } from '../actions/auth'
 import { history } from '../routers/AppRouter'
 import { startResetTasks } from '../actions/tasks'
+import FadeIn from 'react-fade-in/lib/FadeIn'
 
 class Form extends Component {
 	constructor(props) {
@@ -103,117 +104,121 @@ class Form extends Component {
 
 	render() {
 		return (
-			<div className='login-content'>
-				<div className='login-content__data'>
-					<div className='login-content__header'>Task App</div>
-					<span className='login-content__subtitle'>
-						Keep your tasks at one place
-					</span>
-				</div>
-				<div className='login-content__form'>
-					<form
-						className='form'
-						onSubmit={e => this.onSubmitHandler(e)}
-					>
-						{this.props.token ? (
-							<h1 className='login-content__form__header'>
-								Edit Profile
-							</h1>
-						) : (
-							<h1 className='login-content__form__header'>
-								Create Account
-							</h1>
-						)}
-						<input
-							type='text'
-							value={this.state.name}
-							onChange={this.onNameChange}
-							placeholder='Name'
-							className='text-input'
-						/>
+			<FadeIn>
+				<div className='login-content'>
+					<div className='login-content__data'>
+						<div className='login-content__header'>Task App</div>
+						<span className='login-content__subtitle'>
+							Keep your tasks at one place
+						</span>
+					</div>
+					<div className='login-content__form'>
+						<form
+							className='form'
+							onSubmit={e => this.onSubmitHandler(e)}
+						>
+							{this.props.token ? (
+								<h1 className='login-content__form__header'>
+									Edit Profile
+								</h1>
+							) : (
+								<h1 className='login-content__form__header'>
+									Create Account
+								</h1>
+							)}
+							<input
+								type='text'
+								value={this.state.name}
+								onChange={this.onNameChange}
+								placeholder='Name'
+								className='text-input'
+							/>
 
-						<div>
-							<hr />
-						</div>
-
-						<input
-							type='text'
-							value={this.state.email}
-							onChange={this.onEmailChange}
-							placeholder='Email'
-							className='text-input'
-						/>
-
-						<div>
-							<hr />
-						</div>
-
-						<input
-							type='password'
-							value={this.state.password}
-							onChange={this.onPasswordChange}
-							placeholder='Password'
-							className='text-input'
-						/>
-
-						<div>
-							<hr />
-						</div>
-
-						<input
-							type='text'
-							value={this.state.age}
-							onChange={this.onAgeChange}
-							placeholder='Age'
-							className='text-input'
-						/>
-
-						<div>
-							<hr />
-						</div>
-
-						{this.props.token ? (
 							<div>
-								<span className='form__error--register'>
-									{this.state.message}
-								</span>
-								<div className='form-buttons'>
-									<button className='button button--update'>
-										Update
-									</button>
-									<button
-										className='button button--delete'
-										onClick={e => this.handleUserDelete(e)}
-									>
-										Delete
-									</button>
-								</div>
+								<hr />
 							</div>
-						) : (
+
+							<input
+								type='text'
+								value={this.state.email}
+								onChange={this.onEmailChange}
+								placeholder='Email'
+								className='text-input'
+							/>
+
 							<div>
-								<span className='form__error--register'>
-									{this.state.message}
-								</span>
-								<div className='form-buttons'>
-									<button
-										className='button button--register'
-										onClick={e =>
-											this.handleUserRegistration(e)
-										}
-									>
-										Register
-									</button>
-									<button className='button button--login'>
-										<Link className='link' to='/'>
-											Login
-										</Link>
-									</button>
-								</div>
+								<hr />
 							</div>
-						)}
-					</form>
+
+							<input
+								type='password'
+								value={this.state.password}
+								onChange={this.onPasswordChange}
+								placeholder='Password'
+								className='text-input'
+							/>
+
+							<div>
+								<hr />
+							</div>
+
+							<input
+								type='text'
+								value={this.state.age}
+								onChange={this.onAgeChange}
+								placeholder='Age'
+								className='text-input'
+							/>
+
+							<div>
+								<hr />
+							</div>
+
+							{this.props.token ? (
+								<div>
+									<span className='form__error--register'>
+										{this.state.message}
+									</span>
+									<div className='form-buttons'>
+										<button className='button button--update'>
+											Update
+										</button>
+										<button
+											className='button button--delete'
+											onClick={e =>
+												this.handleUserDelete(e)
+											}
+										>
+											Delete
+										</button>
+									</div>
+								</div>
+							) : (
+								<div>
+									<span className='form__error--register'>
+										{this.state.message}
+									</span>
+									<div className='form-buttons'>
+										<button
+											className='button button--register'
+											onClick={e =>
+												this.handleUserRegistration(e)
+											}
+										>
+											Register
+										</button>
+										<button className='button button--login'>
+											<Link className='link' to='/'>
+												Login
+											</Link>
+										</button>
+									</div>
+								</div>
+							)}
+						</form>
+					</div>
 				</div>
-			</div>
+			</FadeIn>
 		)
 	}
 }
