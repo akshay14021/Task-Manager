@@ -6,7 +6,6 @@ import './styles/styles.scss'
 import configurStore from './store/configureStore'
 import { Provider } from 'react-redux'
 import AppRouter, { history } from './routers/AppRouter'
-import Copyright from './components/Copyright'
 import Loading from './components/Loading'
 import { startSetLogout, setLogin, setProfile } from './actions/auth'
 import { startSetTasks } from './actions/tasks'
@@ -19,7 +18,6 @@ toast.configure()
 const jsx = (
 	<Provider store={store}>
 		<AppRouter />
-		<Copyright />
 	</Provider>
 )
 
