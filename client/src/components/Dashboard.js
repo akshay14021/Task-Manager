@@ -19,7 +19,6 @@ class Dashboard extends React.Component {
 				<Header />
 				<TaskList />
 				<AddTask />
-				<Copyright />
 			</FadeIn>
 		)
 	}

@@ -1,21 +1,25 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import './styles/styles.scss'
 import configurStore from './store/configureStore'
 import { Provider } from 'react-redux'
 import AppRouter, { history } from './routers/AppRouter'
+import Copyright from './components/Copyright'
 import Loading from './components/Loading'
 import { startSetLogout, setLogin, setProfile } from './actions/auth'
 import { startSetTasks } from './actions/tasks'
-
 import * as serviceWorker from './serviceWorker'
 import Axios from 'axios'
 
 const store = configurStore()
+toast.configure()
 
 const jsx = (
 	<Provider store={store}>
 		<AppRouter />
+		<Copyright />
 	</Provider>
 )
 
@@ -47,7 +51,9 @@ if (JSON.parse(sessionStorage.getItem('auth'))) {
 				}
 			}).then(response => {
 				store.dispatch(startSetTasks(response.data))
-				renderApp()
+				setTimeout(() => {
+					renderApp()
+				}, 5000)
 			})
 		})
 		.catch(error => {
@@ -58,7 +64,9 @@ if (JSON.parse(sessionStorage.getItem('auth'))) {
 	}
 } else {
 	store.dispatch(startSetLogout())
-	renderApp()
+	setTimeout(() => {
+		renderApp()
+	}, 5000)
 	if (history.location.pathname === '/users') {
 		history.push('/users')
 	} else {
