@@ -57,7 +57,7 @@ class Form extends Component {
 		)
 			.then(response => {
 				this.props.dispatch(setProfile(response.data))
-				history.push('/users/me')
+				history.push('/profile')
 			})
 			.catch(error => {
 				this.setState({
