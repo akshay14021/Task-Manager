@@ -33,7 +33,7 @@ class Loading extends React.Component {
 	componentDidMount() {
 		setTimeout(() => {
 			this.setState({ loading: true })
-		}, 3000)
+		}, 2000)
 	}
 
 	render() {

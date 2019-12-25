@@ -4,7 +4,6 @@ import Header from '../components/Header'
 import AddTask from '../components/AddTask'
 import TaskList from '../components/TaskList'
 import FadeIn from 'react-fade-in/lib/FadeIn'
-import Copyright from './Copyright'
 
 class Dashboard extends React.Component {
 	constructor(props) {

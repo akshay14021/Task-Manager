@@ -51,7 +51,7 @@ if (JSON.parse(sessionStorage.getItem('auth'))) {
 				store.dispatch(startSetTasks(response.data))
 				setTimeout(() => {
 					renderApp()
-				}, 5000)
+				}, 3000)
 			})
 		})
 		.catch(error => {
@@ -64,7 +64,7 @@ if (JSON.parse(sessionStorage.getItem('auth'))) {
 	store.dispatch(startSetLogout())
 	setTimeout(() => {
 		renderApp()
-	}, 5000)
+	}, 3000)
 	if (history.location.pathname === '/users') {
 		history.push('/users')
 	} else {

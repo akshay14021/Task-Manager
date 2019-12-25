@@ -1,54 +1,65 @@
-import React from 'react'
+import React, { createRef } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
-import {
-	ToastContainer,
-	toast,
-	Slide,
-	Zoom,
-	Flip,
-	Bounce
-} from 'react-toastify'
+import { ToastContainer, toast, Flip } from 'react-toastify'
+import Reward from 'react-rewards'
 
-const TaskListItem = props => {
-	const notifyCompleted = () => toast.success('Task Completed')
-	const notifyUnCompleted = () => toast.info('Task Marked Uncomplete')
-	const notifyTaskDeleted = () => toast.warn('Task deleted')
+class TaskListItem extends React.Component {
+	constructor(props) {
+		super(props)
+		this.reward = createRef()
+	}
 
-	return (
-		<div className='option'>
-			<button
-				className={
-					props.tasks.completed
-						? `option__title option__title--completed`
-						: `option__title`
-				}
-				onClick={
-					!props.tasks.completed
-						? () => {
-								props.handleTaskUpdate()
-								notifyCompleted()
-						  }
-						: () => {
-								props.handleTaskUpdate()
-								notifyUnCompleted()
-						  }
-				}
-			>
-				{props.tasks.description}
-			</button>
-			<ToastContainer transition={Flip} />
-			<button
-				className='button--removetask'
-				onClick={() => {
-					props.handleTaskDelete()
-					notifyTaskDeleted()
-				}}
-			>
-				<FontAwesomeIcon icon={faTrashAlt} />
-			</button>
-		</div>
-	)
+	render() {
+		const notifyCompleted = () => toast.success('Task Completed')
+		const notifyUnCompleted = () => toast.info('Task Marked Uncomplete')
+		const notifyTaskDeleted = () => toast.warn('Task deleted')
+		return (
+			<div>
+				<Reward
+					ref={ref => {
+						this.reward = ref
+					}}
+					type='confetti'
+				>
+					<div className='option'>
+						<button
+							className={
+								this.props.tasks.completed
+									? `option__title option__title--completed`
+									: `option__title`
+							}
+							onClick={
+								!this.props.tasks.completed
+									? () => {
+											this.props.handleTaskUpdate()
+											notifyCompleted()
+											this.reward.rewardMe()
+									  }
+									: () => {
+											this.props.handleTaskUpdate()
+											notifyUnCompleted()
+											this.reward.punishMe()
+									  }
+							}
+						>
+							{this.props.tasks.description}
+						</button>
+						<button
+							className='button--removetask'
+							onClick={() => {
+								this.props.handleTaskDelete()
+								notifyTaskDeleted()
+							}}
+						>
+							<FontAwesomeIcon icon={faTrashAlt} />
+						</button>
+					</div>
+				</Reward>
+				<ToastContainer transition={Flip} />
+			</div>
+		)
+	}
 }
 
 export default TaskListItem
