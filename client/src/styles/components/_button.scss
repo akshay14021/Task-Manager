@@ -29,10 +29,10 @@
 .button--addtask {
 	margin-top: 10px;
 	font-weight: 500;
-	margin-bottom: 10px;
-	font-size: 1.5rem;
+	margin: 10px 10px 10px 0;
+	font-size: 2.3rem;
 	background: rgb(104, 104, 4);
-	padding: 5.5px;
+	padding: 12px;
 
 	@media (min-width: $desktop-breakpoint) {
 		padding: 12px;

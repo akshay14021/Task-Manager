@@ -61,7 +61,7 @@ class AddTask extends Component {
 					>
 						<input
 							type='text'
-							placeholder='Add Task '
+							placeholder='Description'
 							value={this.state.description}
 							onChange={this.onDescriptionChange}
 							className='text-input text-input--add'
