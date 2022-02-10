@@ -14,7 +14,7 @@
 		"bootstrap": "^4.4.1",
 		"history": "^4.10.1",
 		"light-toast": "^0.2.2",
-		"node-sass": "^4.13.0",
+		"node-sass": "^7.0.0",
 		"react": "^16.12.0",
 		"react-dom": "^16.12.0",
 		"react-fade-in": "^0.1.7",
